@@ -371,6 +371,15 @@ const.dir5 <- rep("<=", numProjects)
 const.rhs5 = rep(ceiling(total_leaders / numProjects), numProjects)
 
 
+const.mat5a <- as.data.frame(t(t(const.mat2) * temp1))
+
+# constraint is tech ability of students must be greater than or equal to
+const.dir5a <- rep(">=", numProjects)
+
+# RHS is Leadership Skills required by project
+const.rhs5a = rep(floor(total_leaders / numProjects), numProjects)
+
+
 # Constraint #6:  Individual students A and B not on the same project
 
 # Function to implement constraints, dir, and rhs for Student A and B not on same project
@@ -591,6 +600,7 @@ names(const.mat2) <- names(const.mat1)
 names(const.mat3) <- names(const.mat1)
 names(const.mat4) <- names(const.mat1)
 names(const.mat5) <- names(const.mat1)
+names(const.mat5a) <- names(const.mat1)
 # names(const.mat6) <- names(const.mat1)
 # names(const.mat7) <- names(const.mat1)
 names(const.mat8) <- names(const.mat1)
@@ -599,7 +609,8 @@ names(const.mat.india)  <- names(const.mat1)
 names(const.mat.china)  <- names(const.mat1)
 names(const.mat.stu_to_proj) <- names(const.mat.stu_to_proj)
 
-const.mat <- rbind(const.mat1, const.mat2, const.mat3, const.mat4, const.mat5, 
+const.mat <- rbind(const.mat1, const.mat2, const.mat3, const.mat4, const.mat5,
+                   const.mat5a,
                    const.mat.proj_conflict,
                    const.mat8,
                    const.mat8b,
@@ -608,6 +619,7 @@ const.mat <- rbind(const.mat1, const.mat2, const.mat3, const.mat4, const.mat5,
                    )
 
 const.dir <- c(const.dir1, const.dir2, const.dir3, const.dir4, const.dir5, 
+               const.dir5a,
                const.dir.proj_conflict,
                const.dir8,
                const.dir8b,
@@ -615,6 +627,7 @@ const.dir <- c(const.dir1, const.dir2, const.dir3, const.dir4, const.dir5,
                const.dir.stu_to_proj)
 
 const.rhs <- c(const.rhs1, const.rhs2, const.rhs3, const.rhs4, const.rhs5, 
+               const.rhs5a,
                const.rhs.proj_conflict,
                const.rhs8,
                const.rhs8b,
@@ -638,6 +651,7 @@ return_list$constraints <- list(const.mat1 = const.mat1,
                                 const.mat3 = const.mat3, 
                                 const.mat4 = const.mat4, 
                                 const.mat5 = const.mat5, 
+                                const.mat5a = const.mat5a,
                     const.mat.proj_conflict = const.mat.proj_conflict ,
                     const.mat8 = const.mat8,
                     const.mat8b = const.mat8b,
@@ -650,6 +664,7 @@ return_list$rhs <- list(const.rhs1 = const.rhs1,
                         const.rhs3 = const.rhs3, 
                         const.rhs4 = const.rhs4, 
                         const.rhs5 = const.rhs5, 
+                        const.rhs5a = const.rhs5a,
                         const.rhs.proj_conflict = const.rhs.proj_conflict,
                         const.rhs8 = const.rhs8,
                         const.rhs8b = const.rhs8b,
@@ -676,8 +691,8 @@ df.students$project <- project_assingments
 
 output_file <- paste0( file_name,"_student_assignments.csv") 
 
-ouput_file <- gsub("input","output", output_file)
-
+output_file <- gsub("input","output", output_file)
+print(output_file)
 
 write.csv(df.students, output_file)
 

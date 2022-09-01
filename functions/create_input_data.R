@@ -63,7 +63,7 @@ data_list <- list("Student Leadership Skills" = studentLead,
                   )
 
 file_date <- format(Sys.Date(),"%Y%m%d")
-output_file <- paste0("./data/solve_probem_input/lp_input_section_",section,"_", file_date,".xlsx")
+output_file <- paste0("./data/solve_problem_input/lp_input_section_",section,"_", file_date,".xlsx")
 openxlsx::write.xlsx(data_list, output_file)
 
 return(output_file)

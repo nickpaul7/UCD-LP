@@ -2,7 +2,8 @@ source("./functions/solve_problem.R")
 source("./functions/create_input_data.R")
 
 
-file <- "./data/student_info/Attributes to Assist in Practicum Team Creation - dummy input data np edits.xlsx"
+# file <- "./data/student_info/Attributes to Assist in Practicum Team Creation - dummy input data np edits.xlsx"
+file <- "./data/student_info/Attributes to Assist in Practicum Team Creation - input 2022 08 28 scrubbed (1).xlsx"
 section = 1
 lp_input <- create_input_file(file, section = section)
 
