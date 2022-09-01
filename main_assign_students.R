@@ -4,8 +4,11 @@ source("./functions/create_input_data.R")
 
 # file <- "./data/student_info/Attributes to Assist in Practicum Team Creation - dummy input data np edits.xlsx"
 file <- "./data/student_info/Attributes to Assist in Practicum Team Creation - input 2022 08 28 scrubbed (1).xlsx"
+preference <- "./data/student_info/Project Preference Survey 2022 08 31.xlsx"
+preference <- "./data/student_info/Project Preference Survey 2022 08 31 test.xlsx"
+
 section = 1
-lp_input <- create_input_file(file, section = section)
+lp_input <- create_input_file(file, section = section, preference = preference)
 
 minStudents = 4
 maxStudents = 6
@@ -18,7 +21,7 @@ lp_ob$lp_result$objval
 lp_ob$lp_result$status
 
 section = 2
-lp_input <- create_input_file(file, section = section)
+lp_input <- create_input_file(file, section = section, preference = preference)
 
 minStudents = 4
 maxStudents = 6

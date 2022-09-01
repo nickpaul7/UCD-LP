@@ -1,6 +1,6 @@
 
-section1 <- "./data/solve_problem_output/lp_output_section_1_20220901.xlsx_student_assignments.csv"
-section2 <- "./data/solve_problem_output/lp_output_section_2_20220901.xlsx_student_assignments.csv"
+section1 <- "./data/solve_problem_output/lp_output_section_1_20220906.xlsx_student_assignments.csv"
+section2 <- "./data/solve_problem_output/lp_output_section_2_20220906.xlsx_student_assignments.csv"
 file <-  "./data/student_info/Attributes to Assist in Practicum Team Creation - input 2022 08 28 scrubbed (1).xlsx"
 
 df_projects <- openxlsx::read.xlsx(file, sheet = "Projects")
@@ -27,8 +27,7 @@ df_final2 <- merge(df_final, df_projects2, all.x =TRUE, sort = FALSE, by.x = "pr
 wb <- openxlsx::loadWorkbook("./data/combine_assignments_output/lp_report.xlsx")
 openxlsx::deleteData(wb, sheet = "Data", rows = 1:500, cols = 1:500, gridExpand = TRUE )
 openxlsx::writeData(wb, sheet = "Data", df_final2)
-`%>%` <- magrittr::`%>%`
-tday <- Sys.Date() %>% stringr::str_remove_all("-")
+tday <- gsub("-","", Sys.Date())
 openxlsx::saveWorkbook(wb,
                        stringr::str_c("./data/combine_assignments_output/",
                        tday,
