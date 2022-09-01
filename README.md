@@ -114,5 +114,6 @@ needs to created.
 
 ## Review Results
 
-1.  Open `lp_report.xlsx` 10 Refresh pivot tables
-2.  Inspect Results
+1.  Open `./data/combine_assigments_output/[today's date]lp_report.xlsx`
+2.  Refresh pivot tables
+3.  Inspect Results
