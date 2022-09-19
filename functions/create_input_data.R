@@ -58,7 +58,8 @@ studentpref <- cbind(studentpref, df_dummy)
               by.y="Your.Name.(Select.from.dropdown.menu)",
               sort = FALSE)
     
-    project_cols <- colnames(df_preference2)[grepl("Are.you.Interested.in.Project", colnames(df_preference2))]
+    # get project columns
+    project_cols <- colnames(df_preference2)[grepl("Are.you.Interested.in", colnames(df_preference2))]
     
     df_preference3 <- df_preference2[,c(
         "Student_Number","Student_Name",
@@ -87,10 +88,13 @@ studentpref <- cbind(studentpref, df_dummy)
     # 
     # vec <- rep(0, numStudents *numProjects)
     
+    # get the projects in the right order
+    
     studentpref <- df_preference3[c("Student_Number",
                                        "Student_Name",
                                        df_projects$Project_Letter)]
     
+    # name them to match the project sheet
     colnames(studentpref)[colnames(studentpref) %in% df_projects$Project_Letter]<- df_projects$Project_Name
 }
 
